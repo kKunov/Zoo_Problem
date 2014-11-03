@@ -1,5 +1,5 @@
 import requests
-import Animals
+import animals
 
 database = requests.get('/database.json')
 
@@ -14,7 +14,7 @@ class Zoo(object):
         return self.animals
 
     def accommodate(self, animal):
-        if isinstance(animal, Animals):
+        if isinstance(animal, animals):
             self.animals.append(animal)
         else:
             print("This animal does not exist!")
