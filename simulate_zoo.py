@@ -49,18 +49,27 @@ def growing_of_animals(zoo, days):
 
 
 def starter_pack_animals_for_new_zoo(zoo):
-    pesho_tiger = Animals("Pesho", "tiger", "male", 3)
-    ivo_panda = Animals("Ivo", "panda", "male", 5)
-    gosho_lion = Animals("Gosho", "lion", "male", 4)
-    penka_tiger = Animals("Penka", "tiger", "female", 2)
-    ani_panda = Animals("Ani", "panda", "female", 4)
-    desi_lion = Animals("Desi", "lion", "female", 3)
+    pesho_tiger = Animals("Pesho", 2, "tiger", "male", 3)
+    ivo_panda = Animals("Ivo", 3, "panda", "male", 5)
+    gosho_lion = Animals("Gosho", 4, "lion", "male", 4)
+    penka_tiger = Animals("Penka", 2, "tiger", "female", 2)
+    ani_panda = Animals("Ani", 3, "panda", "female", 4)
+    desi_lion = Animals("Desi", 4, "lion", "female", 3)
     zoo.accomodate(pesho_tiger)
     zoo.accomodate(ivo_panda)
     zoo.accomodate(gosho_lion)
     zoo.accomodate(penka_tiger)
     zoo.accomodate(ani_panda)
     zoo.accomodate(desi_lion)
+
+
+def check_funds(zoo, days):
+    if days == 1:
+        return(zoo_daily_balance())
+    for days in range(1, days - 1):
+        if zoo.zoo_daily_balance() < 1:
+            print("Insufficient funds. The zoo has been closed!")
+    return(zoo.zoo_daily_balance())
 
 
 def main():
@@ -71,9 +80,12 @@ def main():
     my_zoo = zoo_init()
     #converting user input of period to days
     days_to_simulate = interval_to_days()
-    growing_of_animals(my_zoo, days_to_simulate)
     #adding initial animals to the zoo
     starter_pack_animals_for_new_zoo(my_zoo)
+    growing_of_animals(my_zoo, days_to_simulate)
+    #checking balance
+    check_funds(my_zoo, days_to_simulate)
+
 
 
 if __name__ == '__main__':
