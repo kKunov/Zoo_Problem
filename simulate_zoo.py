@@ -47,8 +47,8 @@ def growing_of_animals(zoo, days):
             for i in range(1, months_to_grow):
                 animal.grow()
 
-def starter_pack_animals_for_new_zoo(zoo):
-    pesho_tiger = new Animals("Pesho", "tiger", )
+# def starter_pack_animals_for_new_zoo(zoo):
+#     pesho_tiger = new Animals("Pesho", "tiger",)
 
 
 def main():
