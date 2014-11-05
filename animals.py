@@ -31,7 +31,6 @@ class Animals:
         species_dict = json.loads(file.read())
         file.close()
         self.weight += species_dict[self.species]["weight_per_month"]
-        self.is_it_die()
 
     def is_it_die(self):
         file = open("species.json", "r")
