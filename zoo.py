@@ -34,7 +34,7 @@ class Zoo:
                 gras_cost = species_dict[animal.species]["food_per_kilos"]
                 gras_cost *= animal.weight * 2
                 self.budget -= gras_cost
-        return self.butget
+        return self.budget
 
     def can_the_animalas_reproduce(self):
         species_list = {}
