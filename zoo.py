@@ -27,11 +27,13 @@ class Zoo:
         for animal in self.animals:
             self.budget += 60
             if species_dict[animal.species]["food_type"] == "meat":
-                (species_dict[animal.species]["food_per_kilos"] *
-                 animal.weight*4)
+                meat_cost = species_dict[animal.species]["food_per_kilos"]
+                meat_cost *= animal.weight*4
+                self.budget -= meat_cost
             else:
-                (species_dict[animal.species]["food_per_kilos"] *
-                 animal.weight*2)
+                gras_cost = species_dict[animal.species]["food_per_kilos"]
+                gras_cost *= animal.weight * 2
+                self.budget -= gras_cost
         return self.butget
 
     def can_the_animalas_reproduce(self):
