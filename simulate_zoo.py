@@ -41,11 +41,14 @@ def interval_to_days():
 
 
 def growing_of_animals(zoo, days):
-    months_to_grow = days / 30
+    months_to_grow = days // 30
     for animal in zoo.see_animals():
         if months_to_grow > 0:
             for i in range(1, months_to_grow):
                 animal.grow()
+                if animal.is_it_die():
+                    
+
 
 
 def starter_pack_animals_for_new_zoo(zoo):
@@ -55,17 +58,17 @@ def starter_pack_animals_for_new_zoo(zoo):
     penka_tiger = Animals("Penka", 2, "tiger", "female", 2)
     ani_panda = Animals("Ani", 3, "panda", "female", 4)
     desi_lion = Animals("Desi", 4, "lion", "female", 3)
-    zoo.accomodate(pesho_tiger)
-    zoo.accomodate(ivo_panda)
-    zoo.accomodate(gosho_lion)
-    zoo.accomodate(penka_tiger)
-    zoo.accomodate(ani_panda)
-    zoo.accomodate(desi_lion)
+    zoo.accommodate(pesho_tiger)
+    zoo.accommodate(ivo_panda)
+    zoo.accommodate(gosho_lion)
+    zoo.accommodate(penka_tiger)
+    zoo.accommodate(ani_panda)
+    zoo.accommodate(desi_lion)
 
 
 def check_funds(zoo, days):
     if days == 1:
-        return(zoo_daily_balance())
+        return(zoo.zoo_daily_balance())
     for days in range(1, days - 1):
         if zoo.zoo_daily_balance() < 1:
             print("Insufficient funds. The zoo has been closed!")
