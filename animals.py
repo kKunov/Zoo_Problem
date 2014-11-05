@@ -15,8 +15,6 @@ class Animals:
         self.dead = False
 
     def _get_name(self, name):
-        if self.name is not "":
-            return ValueError
         if (self.species in Animals.animals_name and
                 name not in Animals.animals_name[self.species]):
             Animals.animals_name[self.species] = name
@@ -30,20 +28,25 @@ class Animals:
 
     def grow(self):
         self.age += 1
-        self.weight += 3
+        file = open("species.json", "r")
+        species_dict = json.loads(file.read())
+        file.close()
+        self.weight += species_dict[self.species]["weight_per_month"]
         self.is_it_die()
 
     def is_it_die(self):
-        file = open("species", "r")
+        file = open("species.json", "r")
         species_dict = json.loads(file.read())
         life_expectancy = species_dict[self.species]["life_expectancy"]
         chance_of_die = self.age / life_expectancy
         if chance_of_die <= random.random():
             self.dead = True
             print("%s is DEAD!!!" % self.name)
+        file.close()
 
     def eat(self):
-        file = open("species", "r")
+        file = open("species.json", "r")
         species_dict = json.loads(file.read())
         consumation = species_dict[self.species]["food_per_kilos"]
+        file.close()
         return consumation
