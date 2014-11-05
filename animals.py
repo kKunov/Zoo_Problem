@@ -35,12 +35,15 @@ class Animals:
     def is_it_die(self):
         file = open("species.json", "r")
         species_dict = json.loads(file.read())
+        file.close()
         life_expectancy = species_dict[self.species]["life_expectancy"]
         chance_of_die = self.age / life_expectancy
         if chance_of_die <= random.random():
             self.dead = True
             print("%s is DEAD!!!" % self.name)
-        file.close()
+            return True
+        else:
+            return False
 
     def eat(self):
         file = open("species.json", "r")
